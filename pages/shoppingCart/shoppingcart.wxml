@@ -1,0 +1,61 @@
+<!--shoppongcart.wxml-->
+<view class="container">
+    <view wx:if="{{showCartInfo}}">
+        <block wx:for="{{cart_info}}">
+            <view class="pro_info">
+                <view class="checkbox_view" bindtap="bindCheckbox" data-cartid="{{item.cart_id}}" data-status="{{item.selected}}">
+                    <icon wx:if="{{item.selected}}" type="success_no_circle" size="15" catchtap="bindCheckbox" data-cartid="{{item.cart_id}}" data-status="{{item.selected}}" class="checkbox1"/>
+                    <icon wx:else type="no_circle" size="15" catchtap="bindCheckbox" data-cartid="{{item.cart_id}}" data-status="{{item.selected}}" class="checkbox1"/>
+                </view>
+                <view class="pro_image_view">
+                    <image class="pro_image" src="{{imgUrl + item.thumb}}"></image>
+                </view>
+                <view class="nameAndPrice">
+                    <view class="pro_name_view">
+                        <text class="pro_name">{{item.p_name}}</text>
+                    </view>
+                    <view class="guige_view">
+                        <text class="guige">规格：{{item.con_content1}}</text>
+                    </view>
+                    <view class="priceAndCount">
+                        <view class="price_view">
+                            <text class="price">￥{{item.associator_price}}</text>
+                        </view>
+                        <view class="count_view">
+                            <view class="sub_view" bindtap="subtap" data-selectedcount="{{item.count}}" data-cartid="{{item.cart_id}}" data-status="{{item.selected}}">
+                                <text class="sub {{item.count == 1 ? 'disabled' : ''}}" data-selectedcount="{{item.count}}" data-cartid="{{item.cart_id}}" data-status="{{item.selected}}" catchtap="subtap">-</text>
+                            </view>
+                            <view class="count_view1">
+                                <text class="count">{{item.count}}</text>
+                            </view>
+                            <view class="plus_view" bindtap="plustap" data-selectedcount="{{item.count}}" data-cartid="{{item.cart_id}}" data-status="{{item.selected}}">
+                                <text class="plus" data-selectedcount="{{item.count}}" data-cartid="{{item.cart_id}}" data-status="{{item.selected}}" catchtap="plustap">+</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="delete_view" bindtap="deleteCart" data-cartid="{{item.cart_id}}">
+                        <text class="delete" catchtap="deleteCart" data-cartid="{{item.cart_id}}">删除</text>
+                    </view>
+                </view>
+            </view>
+            <view class="line"></view>
+        </block>
+    </view>
+    <view wx:else class="empty_cart_view">
+      <view class="empty_cart">
+          <image class="empty_icon" src="/pics/icons/empty_cart.png" mode="widthFix"></image>
+      </view> 
+    </view>
+    <view class="bottoms">
+        <view class="check_view" bindtap="bindSelectAll" >
+            <icon wx:if="{{selectedAllStatus}}" type="success_no_circle" size="15" catchtap="bindSelectAll" class="checkbox2"/>
+            <icon wx:else type="no_circle" size="15" catchtap="bindSelectAll" class="checkbox2"/>
+        </view>
+        <view class="total_price_view">
+            <text class="total_price">总计：￥{{total_price}}</text>
+        </view>
+        <view class="jiesuan_view" bindtap="jiesuan">
+            <text class="jiesuan" catchtap="jiesuan">去结算</text>
+        </view>
+    </view>
+</view>
