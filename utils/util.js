@@ -36,9 +36,9 @@ function imageUtil(e) {
 
 function checkLogin(){
   if(!app.globalData.openid){
-      return false;
+      return true;
   }
-  return true;
+  return false;
 }
  
 
