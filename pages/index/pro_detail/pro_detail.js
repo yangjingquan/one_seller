@@ -1,6 +1,6 @@
 var app = getApp()
 var imageUtil = require('../../../utils/util.js');  
-var checkLogin = require('../..//utils/util.js'); 
+var checkLogin = require('../../../utils/util.js'); 
 Page({
     data: {
       animationData: "",
