@@ -48,6 +48,9 @@ App({
   getOpenId: function() {
     var that = this
     var userInfo = that.globalData.userInfo
+    if(!userInfo){
+      that.getUserInfo()
+    }
     var userinfo = {
       avatarUrl: userInfo.avatarUrl,
       city: userInfo.city,

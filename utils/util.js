@@ -1,3 +1,4 @@
+var app = getApp()
 function formatTime(date) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1
@@ -6,7 +7,6 @@ function formatTime(date) {
   var hour = date.getHours()
   var minute = date.getMinutes()
   var second = date.getSeconds()
-
 
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
@@ -33,9 +33,17 @@ function imageUtil(e) {
   })
   return imageSize;
 }
+
+function checkLogin(){
+  if(!app.globalData.openid){
+      return false;
+  }
+  return true;
+}
  
 
 module.exports = {
   formatTime: formatTime,
-  imageUtil: imageUtil
+  imageUtil: imageUtil,
+  checkLogin: checkLogin
 }

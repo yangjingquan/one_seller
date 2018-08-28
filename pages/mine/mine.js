@@ -1,4 +1,5 @@
 //mine.js
+var checkLogin = require('../..//utils/util.js'); 
 //获取应用实例
 var app = getApp()
 Page({
@@ -13,8 +14,8 @@ Page({
   },
   onShow: function () {
     var that = this
-    if (!app.globalData.userInfo) {
-      app.getUserInfo(false)
+    if (!app.globalData.userInfo && checkLogin.checkLogin()) {
+      app.getUserInfo()
     }else{
       that.setData({
         userInfo:app.globalData.userInfo,
@@ -25,8 +26,8 @@ Page({
     
   },
   myOrderTap : function(){
-    if (!app.globalData.userInfo) {
-      app.getUserInfo(false)
+    if (!app.globalData.userInfo && checkLogin.checkLogin()) {
+      app.getUserInfo()
     } else {
       wx.navigateTo({
         url: '../orders/myorder',
@@ -35,8 +36,8 @@ Page({
       
   },
   myAddressTap: function () {
-    if (!app.globalData.userInfo) {
-      app.getUserInfo(false)
+    if (!app.globalData.userInfo && checkLogin.checkLogin()) {
+      app.getUserInfo()
     } else {
       wx.navigateTo({
         url: '../address/address?from=mine',
@@ -44,8 +45,8 @@ Page({
     }  
   },
   myAcode : function(){
-    if (!app.globalData.userInfo) {
-      app.getUserInfo(false)
+    if (!app.globalData.userInfo && checkLogin.checkLogin()) {
+      app.getUserInfo()
     } else {
       wx.navigateTo({
         url: '/pages/acode/acode',
@@ -53,8 +54,8 @@ Page({
     }
   },
   getRecOrders : function() {
-    if (!app.globalData.userInfo) {
-      app.getUserInfo(false)
+    if (!app.globalData.userInfo && checkLogin.checkLogin()) {
+      app.getUserInfo()
     } else {
       wx.navigateTo({
         url: '/pages/rec_orders/order',
@@ -62,8 +63,8 @@ Page({
     }
   },
   getMyIncome: function () {
-    if (!app.globalData.userInfo) {
-      app.getUserInfo(false)
+    if (!app.globalData.userInfo && checkLogin.checkLogin()) {
+      app.getUserInfo()
     } else {
       //获取可提现金额和提现中金额
       wx.request({
@@ -85,8 +86,8 @@ Page({
     }  
   },
   replyTixian : function(){
-    if (!app.globalData.userInfo) {
-      app.getUserInfo(false)
+    if (!app.globalData.userInfo && checkLogin.checkLogin()) {
+      app.getUserInfo()
     } else {
       //获取可提现金额和提现中金额
       wx.request({

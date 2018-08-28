@@ -1,4 +1,5 @@
 //shoppingcart.js
+var checkLogin = require('../..//utils/util.js'); 
 //获取应用实例
 var app = getApp()
 Page({
@@ -10,8 +11,8 @@ Page({
     }),
     onShow : function(e){
         var that = this
-        if (!app.globalData.userInfo) {
-          app.getUserInfo(false)
+      if (!app.globalData.userInfo && checkLogin.checkLogin()) {
+          app.getUserInfo()
         }else{
           var bis_id = app.globalData.bis_id
         that.getCartInfo(bis_id,app.globalData.openid)
