@@ -49,7 +49,7 @@ Page({
     //跳转到购物车
     goShoppingCart: function (event) {
       if (!app.globalData.userInfo) {
-        app.getUserInfo(true)
+        app.getUserInfo(false)
       } else {
         wx.switchTab({
           url: '/pages/shoppingCart/shoppingcart',
@@ -65,7 +65,7 @@ Page({
     selectGuige: function (e) {
         var that = this
         if (!app.globalData.userInfo) {
-          app.getUserInfo(true)
+          app.getUserInfo(false)
         } else {
           var pro_id2 = e.target.dataset.proid
           var from = e.target.dataset.from
@@ -98,7 +98,7 @@ Page({
     buyNow: function (e) {
       var that = this
       if (!app.globalData.userInfo) {
-        app.getUserInfo(true)
+        app.getUserInfo(false)
       } else {
         var pro_id3 = e.target.dataset.proid
         var from = e.target.dataset.from

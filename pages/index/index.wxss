@@ -241,3 +241,13 @@
     color: #cccccc;
     text-decoration:line-through;
 }
+
+.kefu{
+  position: fixed;
+  bottom: 60rpx;
+  right: 5rpx;
+}
+.kefu_img{
+  width: 80rpx;
+  height: 80rpx;
+}

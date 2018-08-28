@@ -1,5 +1,5 @@
 {
-  "pages": [   
+  "pages": [
     "pages/index/index",
     "pages/category/category",
     "pages/shoppingCart/shoppingcart",
@@ -12,13 +12,13 @@
     "pages/confirm_order/confirm_order",
     "pages/address/edit_address/edit_address",
     "pages/after_pay/after_pay",
-    "pages/service/service",
     "pages/acode/acode",
     "pages/income/income",
     "pages/rec_orders/order",
     "pages/logistic/logistic",
     "pages/orders_detail/orders_detail",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/auth/index"
   ],
 
   "window": {
@@ -27,7 +27,7 @@
     "navigationBarTitleText": "轻商",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#dddddd",
-    "enablePullDownRefresh": "true"
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "list": [

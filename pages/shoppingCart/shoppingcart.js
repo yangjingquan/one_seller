@@ -11,7 +11,7 @@ Page({
     onShow : function(e){
         var that = this
         if (!app.globalData.userInfo) {
-          app.getUserInfo(true)
+          app.getUserInfo(false)
         }else{
           var bis_id = app.globalData.bis_id
         that.getCartInfo(bis_id,app.globalData.openid)

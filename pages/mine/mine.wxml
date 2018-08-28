@@ -71,7 +71,7 @@
     </view>
   </view>
 
-  <view class="coupon">
+  <!-- <view class="coupon">
     <view class="coupon_img_view">
       <image class="coupon_icon" src="/pics/icons/coupon.png"></image>
     </view>
@@ -84,18 +84,6 @@
     <view class="coupon_jiantou_view">
       <image class="jiantou" src="/pics/icons/jiantou_grey.png"></image>
     </view>
-  </view>
-
-  <view class="custom_service" bindtap="getService">
-    <view class="custom_service_img_view">
-      <image class="earphone_icon" src="/pics/icons/earphone.png"></image>
-    </view>
-    <view class="custom_service_view">
-      <text class="connect">联系客服</text>
-    </view>
-    <view class="jiantou_view">
-      <image class="jiantou" src="/pics/icons/jiantou_grey.png"></image>
-    </view>
-  </view>
+  </view> -->
 
 </view>

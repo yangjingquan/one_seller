@@ -69,3 +69,8 @@
           </view>
       </view>
 </view>
+<view class="kefu">
+    <button open-type="contact" style="border:none;"  plain="true">
+      <image class="kefu_img" src="/pics/icons/kefu.png"></image>
+    </button>
+</view>

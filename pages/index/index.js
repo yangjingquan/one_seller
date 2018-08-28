@@ -8,7 +8,6 @@ Page({
   onLoad: function (options) { 
     var that = this
     var bis_id = app.globalData.bis_id
-
     that.getOpenid(options)
     
     //首页banner

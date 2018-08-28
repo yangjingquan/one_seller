@@ -11,10 +11,9 @@ Page({
       pos_id : 0,
       scrollTop : 0
     },
-    onLoad: function (options) {
+    onShow: function (options) {
       var that = this
       var bis_id = app.globalData.bis_id
-
       wx.getSystemInfo({
         success: function (res) {
           that.setData({
