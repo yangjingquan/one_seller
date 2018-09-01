@@ -20,7 +20,6 @@
     "pages/search/search",
     "pages/auth/index"
   ],
-
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ffffff",
