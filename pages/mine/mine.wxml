@@ -7,7 +7,7 @@
     <view class="username_view">
       <view class="in_username_view">
         <text class="username">{{userInfo.nickName}}</text>
-        <text class="rec_id">我的推荐人ID：{{rec_id}}</text>
+        <!-- <text class="rec_id">我的推荐人ID：{{rec_id}}</text> -->
       </view>
     </view>
   </view>
