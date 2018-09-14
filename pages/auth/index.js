@@ -13,8 +13,11 @@ Page({
           wx.getUserInfo({
             success: function (res) {
               //用户已经授权过
-              wx.navigateBack({
-                delta: 1
+              // wx.navigateBack({
+              //   delta: 1
+              // })
+              wx.switchTab({
+                url: '/pages/index/index'
               })
             }
           });
@@ -45,7 +48,7 @@ Page({
         confirmText: '返回授权',
         success: function (res) {
           if (res.confirm) {
-            console.log('用户点击了“返回授权”')
+          
           }
         }
       })
