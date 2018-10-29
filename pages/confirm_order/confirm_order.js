@@ -138,7 +138,7 @@ Page({
         appid: app.globalData.appid,
         secret: app.globalData.secret
       }
-
+      console.log(postdata)
       //生成外部订单
       wx.request({
         url: app.globalData.requestUrl + '/order/makeOrder',
@@ -173,6 +173,7 @@ Page({
       },
       success: function (res) {
         var preData = res.data.result
+        console.log(preData)
         //调起微信支付
         that.wxPay(preData, pdata.order_id, formId)
       }

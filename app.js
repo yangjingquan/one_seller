@@ -107,15 +107,10 @@ App({
     openid: '',
     acode: '',
     rec_id: '',
-    //测试 
+    //腾讯云正式
     imgUrl: "http://mall.siweishop.com/",
     requestUrl: "https://wxapi.siweishop.com/index",
     acodeUrl: "https://wxapi.siweishop.com/",
     payUrl: "https://wxapi.siweishop.com/index/pay/pay",
-    //腾讯云正式
-    // imgUrl: "http://cp.dxshuju.com/",
-    // requestUrl: "https://xcx001.dxshuju.com/index",
-    // acodeUrl: "https://xcx001.dxshuju.com/",
-    // payUrl: "https://xcx001.dxshuju.com/index/pay/pay",
   }
 })
