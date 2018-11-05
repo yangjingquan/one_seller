@@ -71,6 +71,30 @@
     </view>
   </view>
 
+  <view class="yaoqingma" bindtap="getYaoQingMa">
+    <view class="yaoqingma_img_view">
+      <image class="yaoqingma_icon" src="/pics/icons/yaoqingma.png"></image>
+    </view>
+    <view class="yaoqingma_view">
+      <text class="my_yaoqingma">邀请码</text>
+    </view>
+    <view class="yaoqingma_jiantou_view">
+      <image class="jiantou" src="/pics/icons/jiantou_grey.png"></image>
+    </view>
+  </view>
+
+  <view class="refund" bindtap="refund">
+    <view class="refund_img_view">
+      <image class="refund_icon" src="/pics/icons/refund.png"></image>
+    </view>
+    <view class="refund_view">
+      <text class="my_refund">退款操作</text>
+    </view>
+    <view class="jiantou_view">
+      <image class="jiantou" src="/pics/icons/jiantou_grey.png"></image>
+    </view>
+  </view>
+
   <!-- <view class="coupon">
     <view class="coupon_img_view">
       <image class="coupon_icon" src="/pics/icons/coupon.png"></image>

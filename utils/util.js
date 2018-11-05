@@ -40,7 +40,6 @@ function checkLogin(){
   }
   return false;
 }
- 
 
 module.exports = {
   formatTime: formatTime,

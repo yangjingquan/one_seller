@@ -18,7 +18,9 @@
     "pages/logistic/logistic",
     "pages/orders_detail/orders_detail",
     "pages/search/search",
-    "pages/auth/index"
+    "pages/auth/index",
+    "pages/yaoqingma/index",
+    "pages/refund/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

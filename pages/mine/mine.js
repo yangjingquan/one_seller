@@ -62,6 +62,24 @@ Page({
       })
     }
   },
+  getYaoQingMa: function () {
+    if (!app.globalData.userInfo && checkLogin.checkLogin()) {
+      app.getUserInfo()
+    } else {
+      wx.navigateTo({
+        url: '/pages/yaoqingma/index',
+      })
+    }
+  },
+  refund: function () {
+    if (!app.globalData.userInfo && checkLogin.checkLogin()) {
+      app.getUserInfo()
+    } else {
+      wx.navigateTo({
+        url: '/pages/refund/index',
+      })
+    }
+  },
   getMyIncome: function () {
     if (!app.globalData.userInfo && checkLogin.checkLogin()) {
       app.getUserInfo()

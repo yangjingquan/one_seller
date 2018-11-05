@@ -1,0 +1,16 @@
+<!--pages/yaoqingma/index.wxml-->
+<view class="container">
+    <view class="none_view">
+        <form bindsubmit="formSubmit">
+            <view class="input_view" wx:if="{{yqm_text == ''}}">
+                <input class="input" name="yaoqingma">{{yqm_text}}</input>
+            </view>
+            <view class="button_view" wx:if="{{yqm_text == ''}}">
+                <button class="button_text" formType="submit">验证邀请码</button>
+            </view>
+        </form>
+    </view>
+    <view class="has_view">
+        <label class="yqm_label">我的邀请码: {{yqm_text ? yqm_text : '暂无'}}</label>
+    </view>   
+</view>

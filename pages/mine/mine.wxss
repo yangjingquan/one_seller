@@ -60,7 +60,7 @@ page{
     line-height: 60rpx;
 }
 
-.order,.address,.coupon,.custom_service,.acode,.income,.rec_order{
+.order,.address,.coupon,.custom_service,.acode,.income,.rec_order,.yaoqingma,.refund{
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -72,11 +72,11 @@ page{
     margin-top: 20rpx;
 }
 
-.custom_service,.income,.rec_order{
+.custom_service,.income,.rec_order,.yaoqingma,.refund{
   margin-top: 2rpx;
 }
 
-.order_img_view,.address_img_view,.coupon_img_view,.custom_service_img_view,.acode_img_view,.income_img_view,.rec_order_img_view{
+.order_img_view,.address_img_view,.coupon_img_view,.custom_service_img_view,.acode_img_view,.income_img_view,.rec_order_img_view,.yaoqingma_img_view,.refund_img_view{
     display: flex;
     flex-wrap: wrap;
     box-sizing: border-box;
@@ -86,18 +86,18 @@ page{
     margin-left:2.8%;
 }
 
-.my_order_view,.address_view,.coupon_view,.custom_service_view,.acode_view,.income_view,.rec_order_view{
-margin-left: 15rpx;
+.my_order_view,.address_view,.coupon_view,.custom_service_view,.acode_view,.income_view,.rec_order_view,.yaoqingma_view,.refund_view{
+    margin-left: 15rpx;
     height:100rpx;
     text-align:center;
 }
 
-.my_order,.my_address,.my_coupon,.connect,.my_acode,.my_income,.my_rec_order{
+.my_order,.my_address,.my_coupon,.connect,.my_acode,.my_income,.my_rec_order,.my_yaoqingma,.my_refund{
     font-size: 36rpx;
     line-height: 100rpx;
 }
 
-.jiantou_view,.coupon_jiantou_view,.acode_jiantou_view{
+.jiantou_view,.coupon_jiantou_view,.acode_jiantou_view,.yaoqingma_jiantou_view{
     display: flex;
     flex-wrap: wrap;
     box-sizing: border-box;
@@ -118,6 +118,10 @@ margin-left: 15rpx;
     margin-left: 46%;
 }
 
+.yaoqingma_jiantou_view{
+    margin-left: 56%;
+}
+
 .jiantou{
     width: 55%;
     height: 40%;
@@ -125,12 +129,12 @@ margin-left: 15rpx;
     line-height: 100%;
 }
 
-.order_icon,.address_icon,.earphone_icon,.coupon_icon,.acode_icon,.income_icon,.rec_order_icon{
+.order_icon,.address_icon,.earphone_icon,.coupon_icon,.acode_icon,.income_icon,.rec_order_icon,.yaoqingma_icon,.refund_icon{
     margin: 0 auto;
     line-height: 100%;
 }
 
-.order_icon,.acode_icon,.income_icon,.rec_order_icon{
+.order_icon,.acode_icon,.income_icon,.rec_order_icon,.yaoqingma_icon,.refund_icon{
     width: 65%;
     height: 50%;
 }

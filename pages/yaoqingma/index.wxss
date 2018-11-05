@@ -1,0 +1,52 @@
+/* pages/yaoqingma/index.wxss */
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.none_view{
+    display: flex;
+    flex-direction: column;
+    margin-top: 25%;
+}
+
+.input_view{
+    width: 560rpx;
+    font-size: 32rpx;
+    color: #000000;
+    line-height: 80rpx;
+    margin-top: 2%;
+    border: 1px solid #999999;
+    border-radius: 20rpx;
+}
+
+.input{
+    color:#666666;
+    margin-left: 4%;
+    height: 80rpx;
+}
+.button_view{
+    height: 80rpx;
+    text-align: center;
+    width: 40%;
+    margin-left: 30%;
+    background-color: #666666;
+    border-radius: 5px;
+    margin-top: 2%;
+}
+
+.button_text{
+    font-size: 32rpx;
+    line-height: 80rpx;
+    color: #000;
+}
+
+.has_view{
+    margin-top: 25%;
+}
+
+.yqm_label{
+    font-size: 36rpx;
+    color:#666666;
+}

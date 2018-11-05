@@ -1,6 +1,7 @@
 var app = getApp()
 var imageUtil = require('../../../utils/util.js');  
-var checkLogin = require('../../../utils/util.js'); 
+var checkLogin = require('../../../utils/util.js');
+
 Page({
     data: {
       animationData: "",
@@ -64,35 +65,42 @@ Page({
     },
     //选择规格（加入购物车）
     selectGuige: function (e) {
-        var that = this
+      var that = this
       if (!app.globalData.userInfo && checkLogin.checkLogin()) {
           app.getUserInfo()
-        } else {
-          var pro_id2 = e.target.dataset.proid
-          var from = e.target.dataset.from
-          that.setData({
-              from : from 
-          })
-          //获取商品配置信息
-          wx.request({
-            url: app.globalData.requestUrl + '/product/getProConfigInfoOneDimensional',
-            data: { pro_id: pro_id2 },
-            method: 'post',
-            header: {
-              'content-type': ''
-            },
-            success: function (res) {
-              that.setData({
-                conname: '',
-                cur_price: '',
-                pro_config_info: res.data.result,
-                select_count: 1
-              })
-            }
-          })
-          //显示遮罩层
-          that.showModel()
-        }
+      } else if (app.globalData.yaoqingma == ''){
+        wx.showToast({
+          title: '请填写邀请码',
+          image: '/pics/icons/tanhao.png',
+          duration: 2000,
+          mask: true
+        }) 
+      }else {
+        var pro_id2 = e.target.dataset.proid
+        var from = e.target.dataset.from
+        that.setData({
+            from : from 
+        })
+        //获取商品配置信息
+        wx.request({
+          url: app.globalData.requestUrl + '/product/getProConfigInfoOneDimensional',
+          data: { pro_id: pro_id2 },
+          method: 'post',
+          header: {
+            'content-type': ''
+          },
+          success: function (res) {
+            that.setData({
+              conname: '',
+              cur_price: '',
+              pro_config_info: res.data.result,
+              select_count: 1
+            })
+          }
+        })
+        //显示遮罩层
+        that.showModel()
+      }
         
     }, 
     //选择规格（立即购买）
@@ -100,7 +108,14 @@ Page({
       var that = this
       if (!app.globalData.userInfo && checkLogin.checkLogin()) {
         app.getUserInfo()
-      } else {
+      } else if (app.globalData.yaoqingma == '') {
+        wx.showToast({
+          title: '请填写邀请码',
+          image: '/pics/icons/tanhao.png',
+          duration: 2000,
+          mask: true
+        })
+      }else {
         var pro_id3 = e.target.dataset.proid
         var from = e.target.dataset.from
         that.setData({

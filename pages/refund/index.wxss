@@ -1,0 +1,23 @@
+/* pages/refund/index.wxss */
+.container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.refund_view{
+  display: flex;
+  flex-direction: column;
+  margin-top: 50%;
+  width: 70%;
+  text-align: center;
+}
+
+.content1,.content2{
+  font-size: 36rpx;
+  color:#999999;
+}
+
+.content2{
+  margin-top: 10%;
+}

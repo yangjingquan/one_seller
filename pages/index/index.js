@@ -116,7 +116,7 @@ Page({
   //分享
   onShareAppMessage: function () {
     return {
-      title: '轻商小程序系统，更快！更流畅！',
+      title: '900乐居家电小程序系统，期待你的光临！',
       path: '/pages/index/index'
     }
   },

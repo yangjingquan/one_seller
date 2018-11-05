@@ -107,6 +107,7 @@ App({
     openid: '',
     acode: '',
     rec_id: '',
+    yaoqingma : '',
     //测试 
     // imgUrl: "http://test.mall.siweishop.com/",
     // requestUrl: "https://test.wxapi.siweishop.com/index",
@@ -115,6 +116,7 @@ App({
     //腾讯云正式
     imgUrl: "http://mall.siweishop.com/",
     requestUrl: "https://wxapi.siweishop.com/index",
+    businessUrl: "https://wxapi.siweishop.com/business",
     acodeUrl: "https://wxapi.siweishop.com/",
     payUrl: "https://wxapi.siweishop.com/index/pay/pay",
   }

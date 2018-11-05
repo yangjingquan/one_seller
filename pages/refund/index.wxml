@@ -1,0 +1,7 @@
+<!--pages/refund/index.wxml-->
+<view class="container">
+    <view class="refund_view">
+        <text class="content1">您当前尚未达到租用期限，请联系供应商处理。</text>
+        <text class="content2">联系电话：0414-77889900</text>
+    </view>
+</view>
