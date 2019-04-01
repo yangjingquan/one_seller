@@ -7,8 +7,8 @@ App({
       success: function (res) {
         if (!res.data || res.data == '') {
           //获取用户信息
-          // var loginStatus = true;
-          that.getUserInfo()
+          var loginStatus = true;
+          that.getUserInfo(loginStatus)
         } else {
           that.globalData.openid = res.data
           wx.getStorage({
@@ -16,16 +16,16 @@ App({
             success: function (ress) {
               if (!ress.data || ress.data.length == 0) {
                 //获取用户信息
-                // var loginStatus = true;
-                that.getUserInfo()
+                var loginStatus = true;
+                that.getUserInfo(loginStatus)
               } else {
                 that.globalData.userInfo = ress.data
               }
             },
             fail: function (ress) {
               //获取用户信息
-              // var loginStatus = true;
-              that.getUserInfo()
+              var loginStatus = true;
+              that.getUserInfo(loginStatus)
             }
           })
         }
@@ -33,56 +33,78 @@ App({
       },
       fail: function (res) {
         //获取用户信息
-        // var loginStatus = true;
-        that.getUserInfo()
+        var loginStatus = true;
+        that.getUserInfo(loginStatus)
       }
     })
-    
-    
   },
-  getUserInfo: function () {
-    wx.navigateTo({
-      url: '/pages/auth/index',
-    })
+  getUserInfo: function (loginStatus) {
+    var that = this
+    if (!loginStatus) {
+      wx.openSetting({
+        success: function (data) {
+          if (data) {
+            if (data.authSetting["scope.userInfo"] == true) {
+              loginStatus = true;
+              wx.getUserInfo({
+                withCredentials: false,
+                success: function (data) {
+                  that.globalData.userInfo = data.userInfo
+                  //将userInfo存入缓存
+                  wx.setStorage({
+                    key: "userInfo",
+                    data: data.userInfo
+                  })
+                  that.getOpenId()
+                }
+              });
+            }
+          }
+        }
+      });
+    } else {
+      wx.login({
+        success: function (res) {
+          if (res.code) {
+            wx.getUserInfo({
+              withCredentials: false,
+              success: function (data) {
+                //将userInfo存入缓存
+                wx.setStorage({
+                  key: "userInfo",
+                  data: data.userInfo
+                })
+                that.globalData.userInfo = data.userInfo
+                that.getOpenId()
+              },
+              fail: function () {
+                loginStatus = false;
+              }
+            });
+          }
+        }
+      })
+    }
   },
   getOpenId: function() {
     var that = this
-    var userInfo = that.globalData.userInfo
-    if(!userInfo){
-      that.getUserInfo()
-    }
-    var userinfo = {
-      avatarUrl: userInfo.avatarUrl,
-      city: userInfo.city,
-      country: userInfo.country,
-      gender: userInfo.gender,
-      nickName: userInfo.nickName,
-      province: userInfo.province
-    }
     //调用登录接口
     wx.login({
-      success: function(res) {
+      success: function (res) {
         var postdata = {
           appid: that.globalData.appid,
           secret: that.globalData.secret,
-          code: res.code,
-          bis_id: that.globalData.bis_id,
-          avatarUrl: userInfo.avatarUrl,
-          city: userInfo.city,
-          country: userInfo.country,
-          gender: userInfo.gender,
-          nickName: userInfo.nickName,
-          province: userInfo.province
+          code: res.code
         }
 
         wx.request({
-          url: that.globalData.requestUrl + '/index/getOpenIdNew',
+          url: that.globalData.requestUrl + '/index/getOpenId',
           data: postdata,
           header: {
             'content-type': ''
           },
           method: 'post',
-          success: function(res) {
+          success: function (res) {
             that.globalData.openid = res.data.openid
             if (!res.data.openid) {
               that.getOpenId()
@@ -108,9 +130,8 @@ App({
     acode: '',
     rec_id: '',
     //腾讯云正式
-    imgUrl: "http://mall.siweishop.com/",
     requestUrl: "https://wxapi.siweishop.com/index",
     acodeUrl: "https://wxapi.siweishop.com/",
-    payUrl: "https://wxapi.siweishop.com/index/pay/pay",
+    payUrl: "https://wxapi.siweishop.com/index/pay999/pay",
   }
 })

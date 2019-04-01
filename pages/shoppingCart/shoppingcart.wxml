@@ -8,7 +8,7 @@
                     <icon wx:else type="no_circle" size="15" catchtap="bindCheckbox" data-cartid="{{item.cart_id}}" data-status="{{item.selected}}" class="checkbox1"/>
                 </view>
                 <view class="pro_image_view">
-                    <image class="pro_image" src="{{imgUrl + item.thumb}}"></image>
+                    <image class="pro_image" src="{{item.thumb}}"></image>
                 </view>
                 <view class="nameAndPrice">
                     <view class="pro_name_view">

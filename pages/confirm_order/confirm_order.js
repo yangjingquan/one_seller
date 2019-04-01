@@ -4,7 +4,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrl: app.globalData.imgUrl,
     transport_type: {},
     index : 0,
     showTransportFeeDetail : false,
@@ -162,8 +161,9 @@ Page({
       order_id: order_id,
       body: '商品',
       openid: app.globalData.openid,
-      // bis_id: app.globalData.bis_id
+      bis_id: app.globalData.bis_id
     }
+    console.log(pdata)
     wx.request({
       url: app.globalData.payUrl,
       data: pdata,

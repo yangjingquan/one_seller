@@ -18,7 +18,7 @@
     "pages/logistic/logistic",
     "pages/orders_detail/orders_detail",
     "pages/search/search",
-    "pages/auth/index"
+    "pages/first/first"
   ],
   "window": {
     "backgroundTextStyle": "light",

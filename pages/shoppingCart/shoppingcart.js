@@ -6,8 +6,7 @@ Page({
     data:({
       selected : false,
       total_price : '0.00',
-      selectedAllStatus : 0,
-      imgUrl: app.globalData.imgUrl
+      selectedAllStatus : 0
     }),
     onShow : function(e){
         var that = this

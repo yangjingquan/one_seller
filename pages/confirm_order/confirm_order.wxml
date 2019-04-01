@@ -21,7 +21,7 @@
     <block wx:for="{{cart_info.pro_info}}">
         <view class="pro_info">
             <view class="img_view">
-                <image class="img" src="{{imgUrl + item.thumb}}"></image>
+                <image class="img" src="{{item.thumb}}"></image>
             </view>
             <view class="nameAndPrice">
                 <view class="pro_name_view">

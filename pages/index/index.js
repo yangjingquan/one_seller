@@ -3,7 +3,6 @@
 var app = getApp()
 Page({
   data: {
-    imgUrl: app.globalData.imgUrl
   },
   onLoad: function (options) { 
     var that = this
@@ -11,19 +10,44 @@ Page({
     that.getOpenid(options)
     
     //首页banner
+    that.getBannerInfo(bis_id)
+    //推荐商品列表
+    that.getRecommendProInfo(bis_id)
+    //新品列表
+    that.getNewProInfo(bis_id)
+  },
+  //判断是否被授权
+  onReady: function (options) {
+    wx: wx.getSetting({
+      success: function (res) {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.reLaunch({
+            url: '/pages/first/first',
+          })
+        }
+      }
+    })
+  },
+  //获取banner
+  getBannerInfo: function (bis_id){
+    var that = this
     wx.request({
       url: app.globalData.requestUrl + '/index/getBannersInfo',
-      data: {bis_id : bis_id},
+      data: { bis_id: bis_id },
       header: {
         'content-type': ''
       },
       success: function (res) {
+        console.log(res.data.result)
         that.setData({
           recommend_pics: res.data.result
         })
       }
-    }),
-    //推荐商品列表
+    })
+  },
+  //获取推荐商品列表
+  getRecommendProInfo: function (bis_id) {
+    var that = this
     wx.request({
       url: app.globalData.requestUrl + '/index/getRecommendProInfo',
       data: { bis_id: bis_id },
@@ -31,12 +55,16 @@ Page({
         'content-type': ''
       },
       success: function (res) {
+        console.log(res.data.result)
         that.setData({
           recommend_info: res.data.result
         })
       }
-    }),
-    //新品列表
+    })
+  },
+  //获取新品列表
+  getNewProInfo : function(bis_id){
+    var that = this
     wx.request({
       url: app.globalData.requestUrl + '/index/getNewProInfo',
       data: { bis_id: bis_id },
