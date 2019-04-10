@@ -1,5 +1,13 @@
 <!--shoppongcart.wxml-->
 <view class="container">
+    <view class="cart_type_switch_view">
+           <view class="ori_view" bindtap='cartTypeSwitch' data-type="1">
+              <text class="ori_text {{cart_type == 1 ? 'text_selected' : ''}}">普通商品</text>
+           </view> 
+           <view class="jifen_view" bindtap='cartTypeSwitch' data-type="3">
+              <text class="jifen_text {{cart_type == 3 ? 'text_selected' : ''}}">积分商品</text>
+           </view> 
+        </view>
     <view wx:if="{{showCartInfo}}">
         <block wx:for="{{cart_info}}">
             <view class="pro_info">
@@ -52,7 +60,7 @@
             <icon wx:else type="no_circle" size="15" catchtap="bindSelectAll" class="checkbox2"/>
         </view>
         <view class="total_price_view">
-            <text class="total_price">总计：￥{{total_price}}</text>
+            <text class="total_price">总计：{{total_price}}</text>
         </view>
         <view class="jiesuan_view" bindtap="jiesuan">
             <text class="jiesuan" catchtap="jiesuan">去结算</text>

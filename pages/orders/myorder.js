@@ -46,6 +46,7 @@ Page({
           'content-type': ''
         },
         success: function (res) {
+          console.log(res.data)
           if (res.data.statuscode == 1){
               that.setData({
                 order_info: res.data.result
@@ -71,10 +72,11 @@ Page({
     var pdata = {
       order_id: order_id,
       body: '商品',
-      openid: app.globalData.openid
+      openid: app.globalData.openid,
+      bis_id:app.globalData.bis_id
     }
     wx.request({
-      url: app.globalData.payUrl,
+      url: app.globalData.oriPayUrl,
       data: pdata,
       method: 'post',
       header: {

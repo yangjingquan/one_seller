@@ -1,3 +1,43 @@
+.container {
+  height: 100%;
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.cart_type_switch_view{
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.ori_view,.jifen_view{
+  width: 50%;
+  height: 80rpx;
+  text-align: center;
+}
+
+.ori_view{
+  background-color: #e0dbdb;
+}
+
+.jifen_view{
+  background-color: #e8e8e8;
+}
+
+.ori_text,.jifen_text{
+  font-size: 30rpx;
+  line-height: 80rpx;
+}
+
+.text_selected{
+  color:#FF0000;
+}
+
+
 .pro_info{
     display: flex;
     flex-direction: row;
@@ -34,13 +74,14 @@
 .nameAndPrice{
     display: flex;
     flex-direction: column;
-    width: 59%;
-    margin-left:6rpx;
+    width: 55%;
+    margin-left: 4%;
 }
 
 .pro_name_view{
     width: 100%;
     word-break: break-all;
+    margin-top:3%;
 }
 
 .pro_name{

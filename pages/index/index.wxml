@@ -12,6 +12,14 @@
             </swiper-item>
         </block>
       </swiper>
+      <view class="section section_gap">
+        <view class="scroll-view_H">
+          <view class="scroll-view-item_H" wx:for="{{hotList}}" wx:key="{{item}}" data-redirecturl="{{item.redirect_url}}" bindtap="redirectTo">
+            <image src="{{item.pic}}" class="scroll-image" />
+            <view class="title">{{item.title}}</view>
+          </view>
+        </view>
+      </view>
       <view class="recommend">
           <view class="recommend_title_view">
               <text class="recommend_line">-</text>

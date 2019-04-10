@@ -14,19 +14,20 @@ Page({
     var openid = options.openid
     var bis_id = app.globalData.bis_id
     //获取购物车内选中的信息
-    that.getSelectedCartInfo(openid,bis_id)
+    that.getSelectedCartInfo(openid, bis_id)
   },
   //获取选中的购物车信息
   getSelectedCartInfo: function (openid, bis_id){
       var that = this
       wx.request({
         url: app.globalData.requestUrl + '/shoppingcart/getSelectedCartInfo',
-        data: { openid: openid, bis_id: bis_id },
+        data: { openid: openid, bis_id: bis_id},
         method: 'post',
         header: {
           'content-type': ''
         },
         success: function (res) {
+          console.log(res.data)
           if (res.data.result.address_info.length == 0){
             that.setData({
               showAddress: false
@@ -85,6 +86,8 @@ Page({
                 var pro_amount = res.data.result.pro_amount
                 var ykj_price = result.data.result.ykj_price
                 var total_amount = parseFloat(pro_amount) + parseFloat(ykj_price)
+                console.log(parseFloat(pro_amount))
+                console.log(parseFloat(ykj_price))
                 that.setData({
                   transportType: transportType,
                   showFreightView: false,
@@ -163,9 +166,9 @@ Page({
       openid: app.globalData.openid,
       bis_id: app.globalData.bis_id
     }
-    console.log(pdata)
+  
     wx.request({
-      url: app.globalData.payUrl,
+      url: app.globalData.oriPayUrl,
       data: pdata,
       method: 'post',
       header: {
@@ -173,7 +176,7 @@ Page({
       },
       success: function (res) {
         var preData = res.data.result
-        console.log(preData)
+        console.log(app.globalData.oriPayUrl)
         //调起微信支付
         that.wxPay(preData, pdata.order_id, formId)
       }
@@ -189,17 +192,17 @@ Page({
       paySign: preData.sign,
       success: function (result) {
         //更改订单状态为已付款
-        wx.request({
-          url: app.globalData.requestUrl + '/order/updateOrderStatus',
-          data: { order_id: order_id},
-          method: 'post',
-          header: {
-            'content-type': ''
-          },
-          success: function (res) {
+        // wx.request({
+        //   url: app.globalData.requestUrl + '/order/updateOrderStatus',
+        //   data: { order_id: order_id},
+        //   method: 'post',
+        //   header: {
+        //     'content-type': ''
+        //   },
+        //   success: function (res) {
             
-          }
-        })
+        //   }
+        // })
         //设置主订单表推荐人及佣金信息
         wx.request({
           url: app.globalData.requestUrl + '/order/setMainRecInfo',
