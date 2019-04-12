@@ -246,31 +246,6 @@ Page({
       signType: preData.signType,
       paySign: preData.sign,
       success: function (result) {
-        //更改订单状态
-        // wx.request({
-        //   url: app.globalData.requestUrl + '/order/updateJfOrderStatus',
-        //   data: { order_id: order_id},
-        //   method: 'post',
-        //   header: {
-        //     'content-type': ''
-        //   },
-        //   success: function (res) {
-        //   }
-        // })
-        
-        //减去消耗的积分
-        wx.request({
-          url: app.globalData.requestUrl + '/bis/subJifenOrg',
-          data: { order_id: order_id, openid: app.globalData.openid, bis_id: app.globalData.bis_id },
-          method: 'post',
-          header: {
-            'content-type': ''
-          },
-          success: function (res) {
-
-          }
-        })
-
         //跳转订单
         wx.navigateTo({
           url: '/pages/orders/myorder',

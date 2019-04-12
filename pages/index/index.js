@@ -5,7 +5,7 @@ Page({
   data: {
     hotList: [
       {
-        pic: "/pics/other/jifen.png",
+        pic: "/pics/imgs/nav_pintuan.png",
         title: "积分商城",
         redirect_url: "../jf_products/jf_products"
       },
@@ -13,6 +13,16 @@ Page({
         pic: "/pics/other/acode.png",
         title: "我的身份",
         redirect_url: "../acode/acode"
+      },
+      {
+        pic: "/pics/imgs/nav_tuijian.png",
+        title: "大转盘",
+        redirect_url: "../dzp/dzp"
+      },
+      {
+        pic: "/pics/imgs/008.png",
+        title: "我的积分",
+        redirect_url: "../jifen/jifen"
       }
     ],
   },
@@ -84,6 +94,7 @@ Page({
         'content-type': ''
       },
       success: function (res) {
+        console.log(res.data.result)
         that.setData({
           new_pro_info: res.data.result
         })

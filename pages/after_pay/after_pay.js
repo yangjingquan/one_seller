@@ -50,18 +50,6 @@ Page({
       signType: preData.signType,
       paySign: preData.sign,
       success: function (result) {
-        //更改订单状态为已付款
-        wx.request({
-          url: app.globalData.requestUrl + '/order/updateOrderStatus',
-          data: { order_id: order_id },
-          method: 'post',
-          header: {
-            'content-type': ''
-          },
-          success: function (res) {
-
-          }
-        })
         if (!app.globalData.rec_id || app.globalData.rec_id == '') {
           wx.navigateTo({
             url: '/pages/orders/myorder'

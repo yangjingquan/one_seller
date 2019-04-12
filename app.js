@@ -161,7 +161,6 @@ App({
     requestUrl: "https://julian.dxshuju.com/index",
     extraRequestUrl: "https://julian.dxshuju.com/business",
     acodeUrl: "https://julian.dxshuju.com/",
-    // oriPayUrl: "https://julian.dxshuju.com/pay/OriWxPay/pay",
-    oriPayUrl: "https://julian.dxshuju.com/pay/CurWxPay/pay"
+    oriPayUrl: "https://julian.dxshuju.com/pay/OriWxPay/pay"
   }
 })

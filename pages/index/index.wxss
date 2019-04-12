@@ -282,3 +282,15 @@
   color: #000;
   margin-left: 2rpx;
 }
+
+.jifen {
+  font-size: 22rpx;
+  color: #fff;
+  height: 40rpx;
+  line-height: 40rpx;
+  background-color: #fe4a65;
+  text-align: center;
+  width: 180rpx;
+  margin-top: 10rpx;
+  margin-bottom: 30rpx;
+}

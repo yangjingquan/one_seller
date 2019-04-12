@@ -40,7 +40,9 @@
                           <view class="org_price_view">
                               <text class="org_price">￥{{item.original_price}}</text>
                           </view>
-                          
+                      </view>
+                      <view wx:if="{{item.jifen > 0}}" class="jifen">
+                        <text>可获积分 {{item.jifen}}</text>
                       </view>
                   </view>
               </view>
@@ -69,6 +71,9 @@
                                   <view class="new_org_price_view">
                                       <text class="new_org_price">￥{{itemName.original_price}}</text>
                                   </view>
+                              </view>
+                              <view wx:if="{{itemName.jifen > 0}}" class="jifen">
+                                <text>可获积分 {{itemName.jifen}}</text>
                               </view>
                           </view>
                       </block>

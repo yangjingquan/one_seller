@@ -191,18 +191,6 @@ Page({
       signType: preData.signType,
       paySign: preData.sign,
       success: function (result) {
-        //更改订单状态为已付款
-        // wx.request({
-        //   url: app.globalData.requestUrl + '/order/updateOrderStatus',
-        //   data: { order_id: order_id},
-        //   method: 'post',
-        //   header: {
-        //     'content-type': ''
-        //   },
-        //   success: function (res) {
-            
-        //   }
-        // })
         //设置主订单表推荐人及佣金信息
         wx.request({
           url: app.globalData.requestUrl + '/order/setMainRecInfo',
