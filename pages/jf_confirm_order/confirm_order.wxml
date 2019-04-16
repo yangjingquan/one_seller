@@ -18,36 +18,38 @@
         </view>
     </view>
     <view class="strong_line"></view>
-    <view class="pro_info">
-        <view class="img_view">
-            <image class="img" src="{{pro_info.thumb}}"></image>
-        </view>
-        <view class="nameAndPrice">
-            <view class="pro_name_view">
-                <text class="pro_name">{{pro_info.p_name}}</text>
-            </view>
-            <view class="guige_view">
-                <text class="guige">规格：{{pro_info.con_content1}}</text>
-            </view>
-            <view class="price_view">
-                <view class="unit_price_view">
-                    <text class="price">{{pro_info.jf_price}}</text>
-                </view>
-                <!-- <view class="count_view">
-                    <view class="sub_view" bindtap="subtap" data-selectedcount="{{count}}" data-cartid="{{pro_info.cart_id}}">
-                        <text class="sub {{count == 1 ? 'disabled' : ''}}" data-selectedcount="{{count}}" data-cartid="{{cart_id}}" catchtap="subtap">-</text>
-                    </view>
-                    <view class="count_view1">
-                        <text class="count">{{count}}</text>
-                    </view>
-                    <view class="plus_view" bindtap="plustap" data-selectedcount="{{count}}" data-cartid="{{pro_info.cart_id}}">
-                        <text class="plus" data-selectedcount="{{count}}" data-cartid="{{pro_info.cart_id}}" catchtap="plustap">+</text>
-                    </view>
-                </view> -->
-            </view>
-        </view>
-    </view>
-    <view class="thin_line"></view>
+    <block wx:for="{{pro_info}}">
+      <view class="pro_info">
+          <view class="img_view">
+              <image class="img" src="{{item.thumb}}"></image>
+          </view>
+          <view class="nameAndPrice">
+              <view class="pro_name_view">
+                  <text class="pro_name">{{item.p_name}}</text>
+              </view>
+              <view class="guige_view">
+                  <text class="guige">规格：{{item.con_content1}}</text>
+              </view>
+              <view class="price_view">
+                  <view class="unit_price_view">
+                      <text class="price">{{item.jf_price}}</text>
+                  </view>
+                  <!-- <view class="count_view">
+                      <view class="sub_view" bindtap="subtap" data-selectedcount="{{count}}" data-cartid="{{pro_info.cart_id}}">
+                          <text class="sub {{count == 1 ? 'disabled' : ''}}" data-selectedcount="{{count}}" data-cartid="{{cart_id}}" catchtap="subtap">-</text>
+                      </view>
+                      <view class="count_view1">
+                          <text class="count">{{count}}</text>
+                      </view>
+                      <view class="plus_view" bindtap="plustap" data-selectedcount="{{count}}" data-cartid="{{pro_info.cart_id}}">
+                          <text class="plus" data-selectedcount="{{count}}" data-cartid="{{pro_info.cart_id}}" catchtap="plustap">+</text>
+                      </view>
+                  </view> -->
+              </view>
+          </view>
+      </view>
+      <view class="thin_line"></view>
+    </block>  
     <form bindsubmit="formSubmit" report-submit="true">
         <view wx:if="{{showFreightView}}" class="transport_view">
             <view class="transport_picker_label_view">
