@@ -151,9 +151,9 @@ App({
   },  
   globalData: {
     userInfo: null,
-    bis_id: '50',
-    appid: "wxad58d8a5bce016a9",
-    secret: "bd1a1e37900b08f07d2914b8be1ee78a",
+    bis_id: '60',
+    appid: "wxad2c98b31c594923",
+    secret: "b5e8b3ca6248dd141dd45221bf92f248",
     openid: '',
     acode: '',
     rec_id: '',

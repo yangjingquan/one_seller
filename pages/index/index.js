@@ -94,7 +94,6 @@ Page({
         'content-type': ''
       },
       success: function (res) {
-        console.log(res.data.result)
         that.setData({
           new_pro_info: res.data.result
         })

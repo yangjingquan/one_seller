@@ -38,7 +38,6 @@ Page({
         },
         method: 'post',
         success: function (res) {
-          console.log(res.data)
           if (res.data.response.statuscode == 0) {
             var order_id = res.data.data
             //生成微信预订单
@@ -70,7 +69,6 @@ Page({
       },
       success: function (res) {
         var preData = res.data.result
-        console.log(preData)
         //调起微信支付
         that.wxPay(preData, pdata.order_id)
       }

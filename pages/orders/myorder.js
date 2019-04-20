@@ -46,7 +46,6 @@ Page({
           'content-type': ''
         },
         success: function (res) {
-          console.log(res.data)
           if (res.data.statuscode == 1){
               that.setData({
                 order_info: res.data.result

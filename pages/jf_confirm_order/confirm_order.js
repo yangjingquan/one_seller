@@ -28,7 +28,6 @@ Page({
           'content-type': ''
         },
         success: function (res) {
-          console.log(res.data)
           if (res.data.result.address_info.length == 0){
             that.setData({
               showAddress: false
