@@ -195,7 +195,7 @@ Page({
                       'content-type': ''
                     },
                     success: function (res) {
-
+                        console.log(res.data.message)
                     }
                   })
                   //直接跳转订单页面

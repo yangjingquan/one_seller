@@ -62,6 +62,15 @@ Page({
       })
     }
   },
+  goRechargePage: function () {
+    if (!app.globalData.userInfo && checkLogin.checkLogin()) {
+      app.getUserInfo()
+    } else {
+      wx.navigateTo({
+        url: '/pages/recharge/recharge',
+      })
+    }
+  },
   getMyIncome: function () {
     if (!app.globalData.userInfo && checkLogin.checkLogin()) {
       app.getUserInfo()

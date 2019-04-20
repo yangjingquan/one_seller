@@ -24,7 +24,8 @@
     "pages/jf_pro_detail/detail",
     "pages/jf_confirm_order/confirm_order",
     "pages/jf_products/jf_products",
-    "pages/dzp/dzp"
+    "pages/dzp/dzp",
+    "pages/recharge/recharge"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -66,5 +67,6 @@
     "backgroundColor": "#f1f1f1",
     "borderStyle": "black",
     "position": "bottom"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

@@ -25,6 +25,7 @@
         <view class="third_floor">
             <view class="amount_view">
                 <text class="amount">{{order_type == 1 ? '积分：' : (order_type == 2 ? '' : '金额：')}}{{amount}}</text>
+                <text class="amount">{{order_type == 3 ? '会员卡抵消：￥' + with_balance_amount : ''}}</text>
             </view>
             <view class="buttons">
                 <view class="cancel_order_button_view" data-orderid="{{order_id}}" bindtap="cancelOrder">
@@ -65,6 +66,7 @@
         <view class="third_floor">
             <view class="amount_view">
                <text class="amount">{{order_type == 1 ? '积分：' : (order_type == 2 ? '' : '金额：')}}{{amount}}</text>
+                <text class="amount">{{order_type == 3 ? '会员卡抵消：￥' + with_balance_amount : ''}}</text>
             </view>
             <view class="buttons">
                 <view class="check_logistics_button_view" bindtap="getLogisticInfo" data-postcode="{{post_code}}" data-expressno="{{express_no}}" data-postmode="{{post_mode}}">
@@ -105,6 +107,7 @@
         <view class="third_floor">
             <view class="amount_view">
                 <text class="amount">{{order_type == 1 ? '积分：' : (order_type == 2 ? '' : '金额：')}}{{amount}}</text>
+                <text class="amount">{{order_type == 3 ? '会员卡抵消：￥' + with_balance_amount : ''}}</text>
             </view>
         </view>
     </view>

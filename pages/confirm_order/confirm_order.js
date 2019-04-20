@@ -7,6 +7,7 @@ Page({
     transport_type: {},
     index : 0,
     showTransportFeeDetail : false,
+    isChecked:false
   },
   
   onLoad: function (options) {
@@ -27,7 +28,6 @@ Page({
           'content-type': ''
         },
         success: function (res) {
-          console.log(res.data)
           if (res.data.result.address_info.length == 0){
             that.setData({
               showAddress: false
@@ -77,6 +77,7 @@ Page({
                     transportType: transportType,
                     showFreightView: true,
                     total_amount: total_amount,
+                    need_pay_amount: total_amount,
                     transport_fee: transport_fee,
                     selected_transport_type: res.data.result.transportInfo[0]['mode_id'],
                     buttonUsable: false
@@ -86,13 +87,12 @@ Page({
                 var pro_amount = res.data.result.pro_amount
                 var ykj_price = result.data.result.ykj_price
                 var total_amount = parseFloat(pro_amount) + parseFloat(ykj_price)
-                console.log(parseFloat(pro_amount))
-                console.log(parseFloat(ykj_price))
                 that.setData({
                   transportType: transportType,
                   showFreightView: false,
                   transport_fee: ykj_price,
                   total_amount: total_amount,
+                  need_pay_amount: total_amount,
                   selected_transport_type: '',
                   buttonUsable: false
                 })
@@ -131,7 +131,8 @@ Page({
         mobile: cart_info.address_info.mobile,
         address: cart_info.address_info.address,
         id_no: cart_info.address_info.idno,
-        total_amount: that.data.total_amount,
+        total_amount: that.data.need_pay_amount,
+        with_balance_amount: that.data.with_balance_amount,
         pro_amount: that.data.pro_amount,
         transport_fee: that.data.transport_fee,
         selected_transport_type: that.data.selected_transport_type,
@@ -140,7 +141,7 @@ Page({
         appid: app.globalData.appid,
         secret: app.globalData.secret
       }
-      console.log(postdata)
+      
       //生成外部订单
       wx.request({
         url: app.globalData.requestUrl + '/order/makeOrder',
@@ -151,8 +152,30 @@ Page({
         },
         success: function (res) {
           var order_id = res.data.result
-          //生成微信预订单
-          that.makePreOrder(order_id, formId)
+          if (parseFloat(that.data.need_pay_amount) < '0.01'){
+            //减去消耗的余额
+            wx.request({
+              url: app.globalData.requestUrl + '/Members/subBalance',
+              data: { bis_id: app.globalData.bis_id, openid: app.globalData.openid,with_balance_amount:that.data.with_balance_amount},
+              method: 'post',
+              header: {
+                'content-type': ''
+              },
+              success: function (res) {
+                if(res.data.response.statuscode == 0){
+                  wx.navigateTo({
+                    url: '/pages/after_pay/after_pay?order_id=' + order_id + '&status=success',
+                  })
+                }else{
+                  console.log(res.data.response.messages)
+                }
+                  
+              }
+            })
+          }else{
+            //生成微信预订单
+            that.makePreOrder(order_id, formId)
+          }
         }
       })
     } 
@@ -176,7 +199,6 @@ Page({
       },
       success: function (res) {
         var preData = res.data.result
-        console.log(app.globalData.oriPayUrl)
         //调起微信支付
         that.wxPay(preData, pdata.order_id, formId)
       }
@@ -253,12 +275,28 @@ Page({
     var continue_stage = that.data.transport_info[index]['continue_stage']
     var transport_fee = (parseFloat(first_heavy) + parseFloat(continue_heavy * (Math.ceil((total_weight - 1) / continue_stage)))).toFixed(2)
     var total_amount = (parseFloat(transport_fee) + parseFloat(that.data.pro_amount)).toFixed(2)
+    //判断是否选择使用会员卡
+    if(that.data.isChecked){
+      if (parseFloat(that.data.balance) >= parseFloat(total_amount)) {
+        var need_pay_amount = '0.00'
+        var with_balance_amount = total_amount 
+      } else {
+        var need_pay_amount = (parseFloat(total_amount) - parseFloat(that.data.balance)).toFixed(2)
+        var with_balance_amount = that.data.balance
+      }
+    }else{
+      var need_pay_amount = total_amount
+      var with_balance_amount = '0.00'
+    }
+
     var selected_transport_type = that.data.transport_info[index]['mode_id']
 
     that.setData({
       index: index,
       transport_fee: transport_fee,
       total_amount: total_amount,
+      need_pay_amount: need_pay_amount,
+      with_balance_amount: with_balance_amount,
       selected_transport_type: selected_transport_type
     })
   },
@@ -300,6 +338,56 @@ Page({
     var showTransportFeeDetail = !(that.data.showTransportFeeDetail)
     that.setData({
       showTransportFeeDetail: showTransportFeeDetail
+    })
+  },
+  //切换选择使用会员卡radio
+  switchVipButton : function(e){
+    var that = this
+    var checked = that.data.isChecked
+    if(!checked){
+      //获取订单总价格
+      var total_amount = that.data.total_amount
+      //获取会员卡余额
+      wx.request({
+        url: app.globalData.requestUrl + '/Members/getMemberInfo',
+        data: {bis_id:app.globalData.bis_id,openid:app.globalData.openid},
+        header: {
+          'content-type': ''
+        },
+        method: 'post',
+        success: function (res) {
+          if (res.data.response.statuscode == 0){
+            var balance = res.data.data.balance
+            if (parseFloat(balance) >= parseFloat(total_amount) ){
+              var need_pay_amount = '0.00'
+              var with_balance_amount = total_amount
+            }else{
+              var need_pay_amount = (parseFloat(total_amount) - parseFloat(balance)).toFixed(2)
+              var with_balance_amount = balance
+            }
+            that.setData({
+              need_pay_amount: need_pay_amount,
+              with_balance_amount: with_balance_amount,
+              balance: balance
+            })
+          }else{
+            wx.showToast({
+              title: res.data.response.message,
+              image: '/pics/icons/tanhao.png',
+              duration: 2000,
+              mask: true
+            })
+          }
+        }
+      })
+    }else{
+      that.setData({
+        need_pay_amount: that.data.total_amount,
+        with_balance_amount : '0.00'
+      })
+    }
+    that.setData({
+      isChecked: !checked
     })
   }
 })
