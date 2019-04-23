@@ -82,6 +82,18 @@
       <image class="jiantou" src="/pics/icons/jiantou_grey.png"></image>
     </view>
   </view>
+
+  <view class="rec_order" bindtap="goMyBalancePage">
+    <view class="rec_order_img_view">
+      <image class="rec_order_icon" src="/pics/icons/rec_order.png"></image>
+    </view>
+    <view class="rec_order_view">
+      <text class="my_rec_order">我的余额</text>
+    </view>
+    <view class="jiantou_view">
+      <image class="jiantou" src="/pics/icons/jiantou_grey.png"></image>
+    </view>
+  </view>
   <!-- <view class="coupon">
     <view class="coupon_img_view">
       <image class="coupon_icon" src="/pics/icons/coupon.png"></image>

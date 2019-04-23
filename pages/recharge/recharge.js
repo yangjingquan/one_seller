@@ -56,9 +56,7 @@ Page({
       order_id: order_id,
       body: '充值',
       openid: app.globalData.openid,
-      bis_id: app.globalData.bis_id,
-      //type表示店铺类型，1-商城店铺 2-餐饮店铺
-      type: 1
+      bis_id: app.globalData.bis_id
     }
     wx.request({
       url: app.globalData.rechargePayUrl,

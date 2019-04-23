@@ -25,7 +25,8 @@
     "pages/jf_confirm_order/confirm_order",
     "pages/jf_products/jf_products",
     "pages/dzp/dzp",
-    "pages/recharge/recharge"
+    "pages/recharge/recharge",
+    "pages/balance/balance"
   ],
   "window": {
     "backgroundTextStyle": "light",

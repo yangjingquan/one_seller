@@ -71,6 +71,15 @@ Page({
       })
     }
   },
+  goMyBalancePage: function () {
+    if (!app.globalData.userInfo && checkLogin.checkLogin()) {
+      app.getUserInfo()
+    } else {
+      wx.navigateTo({
+        url: '/pages/balance/balance',
+      })
+    }
+  },
   getMyIncome: function () {
     if (!app.globalData.userInfo && checkLogin.checkLogin()) {
       app.getUserInfo()
