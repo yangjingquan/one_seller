@@ -269,7 +269,7 @@ Page({
             } else {
               that.setData({
                 pro_info: list,
-                hidden: false,
+                hidden: true,
                 hasMore: false
               });
             }
