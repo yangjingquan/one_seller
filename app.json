@@ -26,7 +26,8 @@
     "pages/jf_products/jf_products",
     "pages/dzp/dzp",
     "pages/recharge/recharge",
-    "pages/balance/balance"
+    "pages/balance/balance",
+    "pages/ziliao/ziliao"
   ],
   "window": {
     "backgroundTextStyle": "light",
