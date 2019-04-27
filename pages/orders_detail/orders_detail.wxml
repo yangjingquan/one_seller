@@ -12,7 +12,7 @@
   </view>
   <block wx:for="{{order_info.pro_info}}" wx:for-item="itemPro">
   <view class="goods">
-    <image class="goods_img" src="http://cp.dxshuju.com/{{itemPro.thumb}}"></image>
+    <image class="goods_img" src="{{itemPro.thumb}}"></image>
     <view class="goods_text_view">
       <text class="goods_text1">{{itemPro.p_name}}</text>
       <text class="goods_text2">[规格：{{itemPro.con_content1 + " " + itemPro.con_content2}}]</text>

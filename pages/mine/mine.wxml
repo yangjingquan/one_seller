@@ -1,89 +1,149 @@
-<!--index.wxml-->
-<view class="mine_container">
-  <view class="userinfo">
-    <view class="avatar_view">
-      <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+<view class="user">
+  <view class='header'>
+    <view class='title'>
+      <view class='tx'>
+        <image src='{{userInfo.avatarUrl}}' class='t_img'></image>
+      </view>
+      <view class='name'>
+        <text>{{userInfo.nickName}}</text>
+        <image src='/imgs/vip1.png'></image>
+        <text class='v_text2'>会员信息</text>
+      </view>
     </view>
-    <view class="username_view">
-      <view class="in_username_view">
-        <text class="username">{{userInfo.nickName}}</text>
-        <text class="rec_id">我的推荐人ID：{{rec_id}}</text>
+    <!-- 会员卡 -->
+    <view class='vip' bindtap='vip_btn'>
+      <view class='vip_title'>
+        <image src='/imgs/vip2.png'></image>
+        <text>会员卡</text>
+        <text>余额：{{huiyuan.balance}}元</text>
+      </view>
+      <view class="vip_content">
+        <view class='v_left'>
+          <text class='v_text1'>积分</text>
+          <text class='v_text2'>{{huiyuan.jifen}}</text>
+        </view>
+        <view class='v_right'>
+          <text class='v_text1'>有效期</text>
+          <text class='v_text2'>{{huiyuan.stop_time}}</text>
+        </view>
       </view>
     </view>
   </view>
-  <view class="order" bindtap="myOrderTap">
-    <view class="order_img_view">
-      <image class="order_icon" src="/pics/icons/order.png"></image>
-    </view>
-    <view class="my_order_view">
-      <text class="my_order">我的订单</text>
-    </view>
-    <view class="jiantou_view">
-      <image class="jiantou" src="/pics/icons/jiantou_grey.png"></image>
+
+
+  <view class='box'>
+    <view class='b_list'>
+      <!-- 订单信息 -->
+      <view class="dd_all {{vip_status?'dd_all1':''}}">
+        <view class='dd_header'>
+          <view class="header_left {{dd_state?'header_left_xian':''}}" bindtap='dd_putong'>商城订单</view>
+          <!-- <view class="header_left {{dd_state?'':'header_left_xian1'}}" bindtap='dd_pintuan'>拼团订单</view> -->
+        </view>
+        <view class="dd_content {{dd_state?'color':'color1'}}">
+          <view class='dd_lists' wx:if="{{dd_state}}">
+            <view class='dd_list' bindtap='get_xiangqing' data-status="1">
+              <image class='dd_img' src='/imgs/qt_quanbu.png'></image>
+              <text class='dd_text'>全部</text>
+            </view>
+            <view class='dd_list' bindtap='get_xiangqing' data-status="2">
+              <image class='dd_img' src='/imgs/qt_daifu.png'></image>
+              <text class='dd_text'>待付款</text>
+              <text class='jiaobiao' wx:if="{{jiaobiao.daifu>0}}">{{jiaobiao.daifu}}</text>
+            </view>
+            <view class='dd_list' bindtap='get_xiangqing' data-status="3">
+              <image class='dd_img' src='/imgs/qt_daifa.png'></image>
+              <text class='dd_text'>待发货</text>
+              <text class='jiaobiao' wx:if="{{jiaobiao.daifa>0}}">{{jiaobiao.daifa}}</text>
+            </view>
+            <view class='dd_list' bindtap='get_xiangqing' data-status="4">
+              <image class='dd_img' src='/imgs/qt_daishou.png'></image>
+              <text class='dd_text'>待收货</text>
+              <text class='jiaobiao' wx:if="{{jiaobiao.daishou>0}}">{{jiaobiao.daishou}}</text>
+            </view>
+            <view class='dd_list' bindtap='get_xiangqing' data-status="6">
+              <image class='dd_img' src='/imgs/qt_wancheng.png'></image>
+              <text class='dd_text'>已完成</text>
+            </view>
+          </view>
+          <view class='dd_lists' wx:else>
+            <view class='dd_list' bindtap='get_xiangqing1' data-status="2">
+              <image class='dd_img' src='/imgs/dd_daifu.png'></image>
+              <text class='dd_text'>待付款</text>
+              <text class='jiaobiao1' wx:if="{{jiaobiao1.daifu>0}}">{{jiaobiao1.daifu}}</text>
+            </view>
+            <view class='dd_list' bindtap='get_xiangqing1' data-status="3">
+              <image class='dd_img' src='/imgs/dd_daichengtuan.png'></image>
+              <text class='dd_text'>待成团</text>
+              <text class='jiaobiao1' wx:if="{{jiaobiao1.daicheng>0}}">{{jiaobiao1.daicheng}}</text>
+            </view>
+            <view class='dd_list' bindtap='get_xiangqing1' data-status="4">
+              <image class='dd_img' src='/imgs/dd_daifa.png'></image>
+              <text class='dd_text'>待发货</text>
+              <text class='jiaobiao1' wx:if="{{jiaobiao1.daifa>0}}">{{jiaobiao1.daifa}}</text>
+            </view>
+            <view class='dd_list' bindtap='get_xiangqing1' data-status="5">
+              <image class='dd_img' src='/imgs/dd_daishou.png'></image>
+              <text class='dd_text'>待收货</text>
+              <text class='jiaobiao1' wx:if="{{jiaobiao1.daishou>0}}">{{jiaobiao1.daishou}}</text>
+            </view>
+            <view class='dd_list' bindtap='get_xiangqing1' data-status="6">
+              <image class='dd_img' src='/imgs/dd_wancheng.png'></image>
+              <text class='dd_text'>已完成</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 我的服务 -->
+      <view class='myFuwu'>
+        <view class='fw_title'>
+          <image src='/imgs/huangguan.png'></image>
+          <text>我的服务</text>
+        </view>
+         
+        <view class='fw_ul'>
+          <view class='fw_li' bindtap='goRechargePage'>
+            <image src='/imgs/chongzhi.png'></image>
+            <text>立即充值</text>
+          </view>
+          <view class='fw_li' bindtap="goMyBalancePage">
+            <image src='/imgs/myyue.png'></image>
+            <text>储值余额</text>
+          </view>
+          <view class='fw_li' bindtap="goMyJifen">
+            <image src='/imgs/myjifen.png'></image>
+            <text>我的积分</text>
+          </view>
+          <view class='fw_li' bindtap="myAddressTap">
+            <image src='/imgs/fw_dizhi.png'></image>
+            <text>收货地址</text>
+          </view>
+          <view class='fw_li' bindtap="myziliao">
+            <image src='/imgs/myziliao.png'></image>
+            <text>会员资料</text>
+          </view>
+          <view class='fw_li' bindtap="myAcode">
+            <image src='/imgs/fw_erweima.png'></image>
+            <text>我的二维码</text>
+          </view>
+          <view class='fw_li' bindtap="getRecOrders">
+            <image src='/imgs/fw_tuijian.png'></image>
+            <text>推荐订单</text>
+          </view>
+          <view class='fw_li' bindtap="getMyIncome">
+            <image src='/imgs/fw_shouru.png'></image>
+            <text>我的收入</text>
+          </view>
+          <view class='fw_li' bindtap='jifen'>
+            <image src='/imgs/jifenshangcheng.png'></image>
+            <text>积分商城</text>
+          </view>
+          <view class='fw_li' bindtap='dzp'>
+            <image src='/imgs/dazhuanpan.png'></image>
+            <text>大转盘</text>
+          </view>
+         
+        </view>
+      </view>
     </view>
   </view>
-
-  <view class="address" bindtap="myAddressTap">
-    <view class="address_img_view">
-      <image class="address_icon" src="/pics/icons/address.png"></image>
-    </view>
-    <view class="address_view">
-      <text class="my_address">地址管理</text>
-    </view>
-    <view class="jiantou_view">
-      <image class="jiantou" src="/pics/icons/jiantou_grey.png"></image>
-    </view>
-  </view>
-
-  <view class="acode" bindtap="myAcode">
-    <view class="acode_img_view">
-      <image class="acode_icon" src="/pics/icons/acode.png"></image>
-    </view>
-    <view class="acode_view">
-      <text class="my_acode">我的二维码</text>
-    </view>
-    <view class="acode_jiantou_view">
-      <image class="jiantou" src="/pics/icons/jiantou_grey.png"></image>
-    </view>
-  </view>
-
-  <view class="income" bindtap="getMyIncome">
-    <view class="income_img_view">
-      <image class="income_icon" src="/pics/icons/income.png"></image>
-    </view>
-    <view class="income_view">
-      <text class="my_income">我的收入</text>
-    </view>
-    <view class="jiantou_view">
-      <image class="jiantou" src="/pics/icons/jiantou_grey.png"></image>
-    </view>
-  </view>
-
-  <view class="rec_order" bindtap="getRecOrders">
-    <view class="rec_order_img_view">
-      <image class="rec_order_icon" src="/pics/icons/rec_order.png"></image>
-    </view>
-    <view class="rec_order_view">
-      <text class="my_rec_order">推荐订单</text>
-    </view>
-    <view class="jiantou_view">
-      <image class="jiantou" src="/pics/icons/jiantou_grey.png"></image>
-    </view>
-  </view>
-
-  <!-- <view class="coupon">
-    <view class="coupon_img_view">
-      <image class="coupon_icon" src="/pics/icons/coupon.png"></image>
-    </view>
-    <view class="coupon_view">
-      <text class="my_coupon">优惠卡券</text>
-    </view>
-    <view class="coupon_notice_view">
-      <text class="coupon_notice">(即将上线 敬请期待)</text>
-    </view>
-    <view class="coupon_jiantou_view">
-      <image class="jiantou" src="/pics/icons/jiantou_grey.png"></image>
-    </view>
-  </view> -->
-
 </view>

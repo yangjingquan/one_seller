@@ -6,17 +6,18 @@ Page({
     data:({
       selected : false,
       total_price : '0.00',
-      selectedAllStatus : 0
+      selectedAllStatus : 0,
+      cart_type : 1
     }),
     onShow : function(e){
-        var that = this
+      var that = this
       if (!app.globalData.userInfo && checkLogin.checkLogin()) {
-          app.getUserInfo()
-        }else{
-          var bis_id = app.globalData.bis_id
-        that.getCartInfo(bis_id,app.globalData.openid)
-        that.getCartTotalPrice(bis_id,app.globalData.openid)
-        }
+        app.getUserInfo()
+      }else{
+        var bis_id = app.globalData.bis_id
+        that.getCartInfo(bis_id, app.globalData.openid, that.data.cart_type)
+        that.getCartTotalPrice(bis_id, app.globalData.openid, that.data.cart_type)
+      }
     },
     //单选框
     bindCheckbox: function (e) {
@@ -40,8 +41,8 @@ Page({
         },
         method : 'post',
         success: function (res) {
-          that.getCartInfo(bis_id, app.globalData.openid)
-          that.getCartTotalPrice(bis_id, app.globalData.openid)
+          that.getCartInfo(bis_id, app.globalData.openid, that.data.cart_type)
+          that.getCartTotalPrice(bis_id, app.globalData.openid, that.data.cart_type)
         }
       })
 
@@ -65,8 +66,8 @@ Page({
           },
           method: 'post',
           success: function (res) {
-            that.getCartInfo(bis_id, app.globalData.openid)
-            that.getCartTotalPrice(bis_id, app.globalData.openid)
+            that.getCartInfo(bis_id, app.globalData.openid, that.data.cart_type)
+            that.getCartTotalPrice(bis_id, app.globalData.openid, that.data.cart_type)
             that.setData({
               selectedAllStatus: selected
             })
@@ -74,11 +75,11 @@ Page({
         })
     },
     //获取购物车信息
-    getCartInfo: function (bis_id,wx_id){
+    getCartInfo: function (bis_id, wx_id, cart_type){
         var that = this
         wx.request({
           url: app.globalData.requestUrl + '/shoppingcart/getShoppingCartInfo',
-          data: { bis_id : bis_id ,wx_id: wx_id },
+          data: { bis_id : bis_id ,wx_id: wx_id,cart_type : cart_type },
           header: {
             'content-type': ''
           },
@@ -87,33 +88,30 @@ Page({
             if (res.data.statuscode == 1){
               that.setData({
                   showCartInfo : true,
-                  cart_info: res.data.result
+                  cart_info: res.data.result,
+                  cart_type: cart_type
               })
             }else{
               that.setData({
-                showCartInfo: false
+                showCartInfo: false,
+                cart_type: cart_type
               })
             }
           }
         })
     },
     //获取购物车内选中产品总价格
-    getCartTotalPrice: function (bis_id,wx_id) {
+    getCartTotalPrice: function (bis_id,wx_id,cart_type) {
       var that = this
       wx.request({
         url: app.globalData.requestUrl + '/shoppingcart/getSelectedTotalPrice',
-        data: { bis_id : bis_id,wx_id: wx_id },
+        data: { bis_id: bis_id, wx_id: wx_id, cart_type: cart_type},
         header: {
           'content-type': ''
         },
         method : 'post',
         success: function (res) {
-          var total_price = ''
-          if (res.data.result == 0){
-            total_price = '0.00'
-          }else(
-            total_price = (res.data.result).toFixed(2)
-          )
+          var total_price = res.data.result
           that.setData({
             total_price : total_price
           })
@@ -152,8 +150,8 @@ Page({
             },
             method : 'post',
             success: function (res) {
-              that.getCartInfo(bis_id,app.globalData.openid)
-              that.getCartTotalPrice(bis_id,app.globalData.openid)
+              that.getCartInfo(bis_id,app.globalData.openid,that.data.cart_type)
+              that.getCartTotalPrice(bis_id, app.globalData.openid, that.data.cart_type)
             }
           })
       }
@@ -189,8 +187,8 @@ Page({
         },
         method: 'post',
         success: function (res) {
-          that.getCartInfo(bis_id, app.globalData.openid)
-          that.getCartTotalPrice(bis_id, app.globalData.openid)
+          that.getCartInfo(bis_id, app.globalData.openid, that.data.cart_type)
+          that.getCartTotalPrice(bis_id, app.globalData.openid, that.data.cart_type)
         }
       })
     },
@@ -198,19 +196,27 @@ Page({
     jiesuan : function(){
        var that = this
        var openid = app.globalData.openid
+       var cart_type = that.data.cart_type
        //验证是否存在选中的购物车商品
        wx.request({
          url: app.globalData.requestUrl + '/shoppingcart/checkSelectedPro',
-         data: { openid: openid},
+         data: { openid: openid, cart_type: cart_type},
          header: {
            'content-type': ''
          },
          method: 'post',
          success: function (res) {
            if(res.data.result > 0){
-             wx.navigateTo({
-               url: '../confirm_order/confirm_order?openid=' + openid,
-             })
+             if (cart_type == 1){
+               wx.navigateTo({
+                 url: '/pages/confirm_order/confirm_order?openid=' + openid,
+               })
+             }else if(cart_type == 3){
+               wx.navigateTo({
+                 url: '/pages/jf_confirm_order/confirm_order?openid=' + openid,
+               })
+             }
+             
            }else{
              wx.showToast({
                title: '请选择商品',
@@ -230,7 +236,7 @@ Page({
       wx.showNavigationBarLoading()
       wx.request({
         url: app.globalData.requestUrl + '/shoppingcart/getShoppingCartInfo',
-        data: { bis_id : bis_id,wx_id: app.globalData.openid },
+        data: { bis_id: bis_id, wx_id: app.globalData.openid, cart_type : that.data.cart_type },
         header: {
           'content-type': ''
         },
@@ -251,7 +257,7 @@ Page({
           wx.stopPullDownRefresh() //停止下拉刷新
         }
       })
-      that.getCartTotalPrice(bis_id,app.globalData.openid)
+      that.getCartTotalPrice(bis_id, app.globalData.openid, that.data.cart_type)
     },
     //上拉加载更多（待开发）
     onReachBottom : function(){
@@ -276,8 +282,8 @@ Page({
                 icon: 'success',
                 duration: 2000,
                 success: function (result) {
-                  that.getCartInfo(bis_id,app.globalData.openid)
-                  that.getCartTotalPrice(bis_id,app.globalData.openid)
+                  that.getCartInfo(bis_id, app.globalData.openid, that.data.cart_type)
+                  that.getCartTotalPrice(bis_id, app.globalData.openid, that.data.cart_type)
                 }
               })
             }else{
@@ -286,12 +292,18 @@ Page({
                 icon: 'fail',
                 duration: 2000,
                 success: function (result) {
-                  that.getCartInfo(bis_id,app.globalData.openid)
-                  that.getCartTotalPrice(bis_id,app.globalData.openid)
+                  that.getCartInfo(bis_id, app.globalData.openid, that.data.cart_type)
+                  that.getCartTotalPrice(bis_id, app.globalData.openid, that.data.cart_type)
                 }
               })
             }
           }
         })
+    },
+    //切换购物车类型
+    cartTypeSwitch : function(e){
+      var that = this
+      that.getCartInfo(app.globalData.bis_id, app.globalData.openid, e.currentTarget.dataset.type)
+      that.getCartTotalPrice(app.globalData.bis_id, app.globalData.openid, e.currentTarget.dataset.type)
     }
 })

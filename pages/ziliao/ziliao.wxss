@@ -1,0 +1,167 @@
+.renzheng{
+  width: 94%;
+  height: 100%;
+  padding: 3%;
+  background-color: #f1f1f1;
+  padding-bottom: 300rpx;
+}
+.list {
+  width: 94%;
+  padding: 3%;
+  height: 60rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  margin-bottom: 10rpx;
+}
+.list2{
+  background-color: #f1f1f1;
+}
+.list_head{
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 60rpx;
+  text-align: left;
+}
+.list_left {
+  float: left;
+  width: 25%;
+  height: 60rpx;
+  font-size: 32rpx;
+  line-height: 60rpx;
+}
+
+.list_right {
+  float: left;
+  width: 70%;
+  height: 60rpx;
+  font-size: 32rpx;
+  line-height: 60rpx;
+}
+
+.inp-holder {
+  display: block;
+  width: 100%;margin-top: 10rpx;
+}
+.list1 {
+  height: 300rpx;
+}
+
+.list_header {
+  width: 100%;
+  height: 60rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #e2e2e2;
+}
+
+.inputBox {
+  width: 90%;
+  height: 200rpx;
+  margin: 0 5%;
+  margin-top: -250rpx;
+  position: relative;
+}
+
+.inputBox textarea {
+  padding-top: 10rpx;
+  width: 100%;
+  height: 200rpx;
+  font-size: 32rpx;
+  line-height: 36rpx;
+}
+
+.bottom {
+  width: 100%;
+  height: 300rpx;
+  padding-top: 50rpx;
+}
+
+.btn {
+  width: 90%;
+  height: 100rpx;
+  border-radius: 20rpx;
+  background-color: #ff6b6b;
+  color: #fff;
+  margin: 50rpx auto 0;
+  text-align: center;
+  font-size: 32rpx;
+  line-height: 100rpx;
+}
+.imgs{
+  width: 100%;
+  height: 220rpx;
+}
+.img{
+  float: left;
+  width: 45%;
+  height: 200rpx;
+  margin: 2%;
+  border: 2rpx dashed #bdbdbd;
+  position: relative;
+}
+.cha{
+  position: absolute;
+  right: -20rpx;
+  top: -20rpx;
+  width: 40rpx;
+  height: 40rpx;
+  background-color: #ccc;
+  color: #fff;
+  border-radius: 50%;
+  transform: rotateZ(45deg);
+  font-size:55rpx;
+  line-height: 34rpx;
+}
+.img_bg{
+  width: 100%;
+  height: 200rpx;
+  text-align: center;
+  color: #bdbdbd;
+}
+.img image{
+  width: 90%;
+  height: 90%;
+  padding:3% 5%;
+}
+.img text{
+  display: block;
+  font-size: 32rpx;
+  line-height: 56rpx;
+}
+.img text:nth-child(1){
+  padding-top: 20rpx;
+  font-size: 72rpx;
+  line-height: 80rpx;
+}
+.shilis{
+  width: 100%;
+  height: 200rpx;
+}
+.shili{
+  float: left;
+  width: 45%;
+  height: 150rpx;
+  margin: 2%;
+  text-align: center;
+  font-size: 28rpx;
+  color: #bdbdbd;
+}
+.sl_img{
+  text-indent: -9999rpx;
+  width: 80%;
+  margin: 5% 10%;
+  height: 150rpx;
+  background-image: url(http://cpzb.dxshuju.com/xcx_img/23.png);
+  background-repeat: no-repeat;
+  /* background-position: -120rpx -20rpx; */
+  background-size: 100% 100%;
+}
+.sl_img2{
+  text-indent: -9999rpx;
+  width: 80%;
+  margin: 5% 10%;
+  height: 150rpx;
+  background-image: url(http://cpzb.dxshuju.com/xcx_img/24.png);
+  background-repeat: no-repeat;
+  /* background-position: -120rpx -20rpx; */
+  background-size: 100% 100%;
+}

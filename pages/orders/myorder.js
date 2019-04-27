@@ -71,10 +71,11 @@ Page({
     var pdata = {
       order_id: order_id,
       body: '商品',
-      openid: app.globalData.openid
+      openid: app.globalData.openid,
+      bis_id:app.globalData.bis_id
     }
     wx.request({
-      url: app.globalData.payUrl,
+      url: app.globalData.oriPayUrl,
       data: pdata,
       method: 'post',
       header: {
@@ -97,18 +98,6 @@ Page({
       signType: preData.signType,
       paySign: preData.sign,
       success: function (result) {
-        //更改订单状态为已付款
-        wx.request({
-          url: app.globalData.requestUrl + '/order/updateOrderStatus',
-          data: { order_id: order_id },
-          method: 'post',
-          header: {
-            'content-type': ''
-          },
-          success: function (res) {
-
-          }
-        })
         if (!app.globalData.rec_id || app.globalData.rec_id == '') {
           var e = {
             currentTarget : {

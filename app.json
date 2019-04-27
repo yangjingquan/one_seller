@@ -18,12 +18,21 @@
     "pages/logistic/logistic",
     "pages/orders_detail/orders_detail",
     "pages/search/search",
-    "pages/first/first"
+    "pages/first/first",
+    "pages/jifen/jifen",
+    "pages/jf_address/address",
+    "pages/jf_pro_detail/detail",
+    "pages/jf_confirm_order/confirm_order",
+    "pages/jf_products/jf_products",
+    "pages/dzp/dzp",
+    "pages/recharge/recharge",
+    "pages/balance/balance",
+    "pages/ziliao/ziliao"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTitleText": "轻商",
+    "navigationBarTitleText": "聚联电商",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#dddddd",
     "enablePullDownRefresh": true

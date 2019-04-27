@@ -1,154 +1,288 @@
-/**index.wxss**/
-page{
-    background-color: #eeeeee;
-    height: 100%;
+.user{
+  width: 100%;
+  min-height: 100%;
+  background-color: #f5f5f5;
+  overflow: hidden;
 }
-.mine_container{
-    display: flex;
-    flex-direction:column;
-    
+.header{
+  width: 100%;
+  height: 450rpx;
+  
+  background-image: url(http://cpzb.dxshuju.com/xcx_img/13.png);
+  background-repeat: no-repeat;
+  /* background-position: -120rpx -20rpx; */
+  background-size: 100% 100%;
+  position: relative;
 }
-.userinfo {
-    display: flex;
-    flex-direction: column;
-    height: 340rpx;
-    background-color: #fff;
+.title{
+  width: 100%;
+  height: 120rpx;
+  padding: 5%;
+  padding-top: 80rpx;
+  color: #fff;
+}
+.tx{
+  float: left;
+  width: 120rpx;
+  height: 120rpx;
+  margin: 0 20rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.t_img{
+  width: 120rpx;
+  height: 120rpx;
+}
+.name{
+  width: 60%;
+  float: left;
+}
+.name text{
+  display: block;
+  width: 100%;
+  height: 50rpx;
+  font-size: 36rpx;
+  line-height: 48rpx;
+}
+.name image{
+  float: left;
+  width: 30rpx;
+  height: 30rpx;
+  padding: 15rpx 10rpx 0 0;
+}
+.name .v_text2{
+  float: left;
+  width: 50%;
+  height: 28rpx;
+  padding-top: 20rpx;
+  padding-left:5rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+}
+.nav{
+  width: 100%;
+  height: 100rpx;
+  color: #fff;
+}
+.n_list{
+  float: left;
+  width: 33%;
+  height: 100%;
+}
+.n_list image{
+  display: block;
+  width: 44rpx;
+  height: 40rpx;
+  margin: 15rpx auto;
+}
+.n_list text{
+  display: block;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  text-align: center;
+}
+.vip{
+  position: absolute;
+  left: 5%;
+  top: 240rpx;
+  width: 90%;
+  height: 300rpx;
+  background-color: #f5e3b3;
+  border-radius: 30rpx;
+}
+.vip_title{
+  width: 90%;
+  height: 80rpx;
+  padding: 0 5%;
+  font-size: 24rpx;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #e8d4a1;
+}
+.vip_title image{
+  float: left;
+  width: 40rpx;
+  height: 40rpx;
+  padding: 20rpx 0;
+  padding-right: 10rpx;
+}
+.vip_title text:nth-child(2){
+  font-size: 32rpx;
+  float: left;
+}
+.vip_title text:nth-child(3){
+  float: right;
+}
+.vip_content{
+  padding: 50rpx;
+}
+.v_left{
+  float: left;
+  color: #8c7e61;
+}
+.v_right{
+  float: right;
+  color: #8a7c5f;
+}
+.v_text1{
+  display: block;
+  font-size: 24rpx;
+  line-height: 32rpx;
+  text-align: right;
+}
+.box{
+  width: 100%;
+  /* height: 570rpx; */
+  padding-bottom: 200rpx;
+  background-color: rgba( 0,0,0,0);
+  position: relative;
+  z-index: 100;
+}
+.b_list{
+  width: 100%;
+  /* height: 400rpx; */
 }
 
-.avatar_view{
-    width: 100%;
-    height: 60%;
-    display: flex;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    align-items: center;
+
+/* 订单管理 */
+.dd_all{
+  width: 94%;
+  margin:0 3% 3%;
+  height: 250rpx;
+  border-radius: 30rpx;
+  background-color: #fff;
+}
+.dd_all1{
+  margin-top:100rpx; 
+}
+.dd_header{
+  width: 100%;
+  height: 70rpx;
+}
+.header_left{
+  float: left;
+  width: 40%;
+  margin: 0 5%;
+  height: 70rpx;
+  text-align: center;
+  font-size: 28rpx;
+  line-height: 70rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid rgba( 0,0,0,0);
 }
 
-.avatar {
-    width: 180rpx;
-    height: 180rpx;
-    border-radius: 50%;
-    margin: 0 auto;
-    line-height: 100%;
+.header_left_xian{
+  border-bottom: 1rpx solid #e51e21;
+  color: #e51e21;
+}
+.header_left_xian1 {
+  border-bottom: 1rpx solid #ffad01;
+  color: #ffad01;
+}
+.color{
+  color: #e51e21;
 }
 
-.username_view{
-    width: 100%;
-    height: 40%;
-    text-align: center;
+.color1{
+  color: #ffad01;
 }
-
-.in_username_view{
+.dd_content{
+  width: 100%;
+  height: 180rpx;
+}
+.dd_lists{
+  width: 100%;
+  height: 180rpx;
+}
+.dd_list{
+  float: left;
+  width: 20%;
+  height: 180rpx;
+  position: relative;
+}
+.dd_img{
+  display: block;
+  width: 50rpx;
+  height: 50rpx;
+  margin: 30rpx auto;
+}
+.dd_text{
+  display: block;
+  font-size: 28rpx;
+  line-height: 32rpx;
+  text-align: center;
+}
+.jiaobiao{
+  position: absolute;
+  right: 25rpx;
+  top: 20rpx;
+  width: 30rpx;
+  height: 30rpx;
+  border: 1rpx solid #e51e21;
+  background-color: #fff;
+  border-radius: 50%;
+  font-size: 24rpx;
+  line-height: 30rpx;
+  text-align: center;
+}
+.jiaobiao1{
+  position: absolute;
+  right: 25rpx;
+  top: 20rpx;
+  width: 30rpx;
+  height: 30rpx;
+  border: 1rpx solid #ffad01;
+  background-color: #fff;
+  border-radius: 50%;
+  font-size: 24rpx;
+  line-height: 30rpx;
+  text-align: center;
+}
+/* 我的服务 */
+.myFuwu{
+  width: 100%;
+  background-color: #fff;
+  height:550rpx;
+}
+.fw_title{
+  width: 90%;
+  height: 60rpx;
+  padding: 2% 5% 0;
+}
+.fw_title image{
+  float: left;
+  width: 40rpx;
+  height: 40rpx;
+  padding: 10rpx;
+  padding-left: 0;
+}
+.fw_title text{
+  float: left;
+  font-size: 24rpx;
+  line-height: 60rpx;
+}
+.fw_ul{
+  width: 100%;
+  height: 300rpx;
   display: flex;
-  flex-direction:column;
-    width: 50%;
-    height: 100%;
-    margin-left: 25%;
+  flex-wrap: wrap;
+  justify-content:  flex-start;
 }
-
-.username{
-    font-size: 36rpx;
-    color: #000000;
-    height: 60rpx;
-    line-height: 60rpx;
+.fw_li{
+  width: 25%;
+  height: 150rpx;
 }
-
-.rec_id{
-    font-size: 28rpx;
-    color: #ccc;
-    height: 60rpx;
-    line-height: 60rpx;
+.fw_li image{
+  display: block;
+  width: 20%;
+  height: 40rpx;
+  margin: 20rpx auto;
 }
-
-.order,.address,.coupon,.custom_service,.acode,.income,.rec_order{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100rpx;
-    background-color: #fff;
+.fw_li text{
+  display: block;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  text-align: center;
 }
-
-.order,.address,.coupon,.acode{
-    margin-top: 20rpx;
+.fw_li_bg{
+  color:#ff6b6b;
 }
-
-.custom_service,.income,.rec_order{
-  margin-top: 2rpx;
-}
-
-.order_img_view,.address_img_view,.coupon_img_view,.custom_service_img_view,.acode_img_view,.income_img_view,.rec_order_img_view{
-    display: flex;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    align-items: center;
-    width: 10%;
-    height: 100%;
-    margin-left:2.8%;
-}
-
-.my_order_view,.address_view,.coupon_view,.custom_service_view,.acode_view,.income_view,.rec_order_view{
-margin-left: 15rpx;
-    height:100rpx;
-    text-align:center;
-}
-
-.my_order,.my_address,.my_coupon,.connect,.my_acode,.my_income,.my_rec_order{
-    font-size: 36rpx;
-    line-height: 100rpx;
-}
-
-.jiantou_view,.coupon_jiantou_view,.acode_jiantou_view{
-    display: flex;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    align-items: center;
-    width: 10%;
-    height: 100%;
-}
-
-.jiantou_view{
-    margin-left: 51%;
-}
-
-.coupon_jiantou_view{
-    margin-left: -1%;
-}
-
-.acode_jiantou_view{
-    margin-left: 46%;
-}
-
-.jiantou{
-    width: 55%;
-    height: 40%;
-    margin: 0 auto;
-    line-height: 100%;
-}
-
-.order_icon,.address_icon,.earphone_icon,.coupon_icon,.acode_icon,.income_icon,.rec_order_icon{
-    margin: 0 auto;
-    line-height: 100%;
-}
-
-.order_icon,.acode_icon,.income_icon,.rec_order_icon{
-    width: 65%;
-    height: 50%;
-}
-
-.address_icon,.earphone_icon,.coupon_icon{
-    width: 70%;
-    height: 55%;
-}
-
-.coupon_notice_view{
-    width:52%;
-    height:100rpx;
-}
-
-.coupon_notice{
-    font-size: 30rpx;
-    line-height: 100rpx;
-    color: #cccccc;
-}
-
-

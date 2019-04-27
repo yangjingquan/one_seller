@@ -3,6 +3,28 @@
 var app = getApp()
 Page({
   data: {
+    hotList: [
+      {
+        pic: "/pics/imgs/nav_pintuan.png",
+        title: "积分商城",
+        redirect_url: "../jf_products/jf_products"
+      },
+      {
+        pic: "/pics/other/acode.png",
+        title: "我的身份",
+        redirect_url: "../acode/acode"
+      },
+      {
+        pic: "/pics/imgs/nav_tuijian.png",
+        title: "大转盘",
+        redirect_url: "../dzp/dzp"
+      },
+      {
+        pic: "/pics/imgs/008.png",
+        title: "我的积分",
+        redirect_url: "../jifen/jifen"
+      }
+    ],
   },
   onLoad: function (options) { 
     var that = this
@@ -24,6 +46,8 @@ Page({
           wx.reLaunch({
             url: '/pages/first/first',
           })
+        } else {
+          app.getOpenId()
         }
       }
     })
@@ -38,7 +62,6 @@ Page({
         'content-type': ''
       },
       success: function (res) {
-        console.log(res.data.result)
         that.setData({
           recommend_pics: res.data.result
         })
@@ -55,7 +78,6 @@ Page({
         'content-type': ''
       },
       success: function (res) {
-        console.log(res.data.result)
         that.setData({
           recommend_info: res.data.result
         })
@@ -147,6 +169,12 @@ Page({
       title: '轻商小程序系统，更快！更流畅！',
       path: '/pages/index/index'
     }
+  },
+  redirectTo: function (e) {
+    var url = e.currentTarget.dataset.redirecturl
+    wx.navigateTo({
+      url: url
+    });
   },
   //获取openid
   getOpenid: function (options){

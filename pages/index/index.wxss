@@ -251,3 +251,46 @@
   width: 80rpx;
   height: 80rpx;
 }
+
+.scroll-view_H {
+  width: 100%;
+  margin-top: 20rpx;
+  height: 180rpx;
+  white-space: nowrap;
+}
+
+.scroll-view-item_H {
+  width: 25%;
+  height: 100rpx;
+  display: inline-block;
+  text-align: center;
+}
+
+.scroll-image {
+  width: 90rpx;
+  height: 90rpx;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.title {
+  margin-top: 20rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 25rpx;
+  color: #000;
+  margin-left: 2rpx;
+}
+
+.jifen {
+  font-size: 22rpx;
+  color: #fff;
+  height: 40rpx;
+  line-height: 40rpx;
+  background-color: #fe4a65;
+  text-align: center;
+  width: 180rpx;
+  margin-top: 10rpx;
+  margin-bottom: 30rpx;
+}

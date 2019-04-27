@@ -75,6 +75,17 @@
             </view> 
         </view>
         <view class="thin_line"></view>
+        <view class="vip_card_view">
+            <view class="vip_card_text_view">
+                <text class="vip_card_text">使用会员卡</text>
+            </view>
+            <view class="vip_card_radio_view">
+                <radio-group class="radio-group">
+                    <radio class="vip_card_radio" bindtap="switchVipButton" checked="{{isChecked}}"></radio>
+                </radio-group>
+            </view>
+        </view>
+        <view class="thin_line"></view>
         <view class="remark_view">
             <label class="remark_label">备注：</label>
             <input class="remark_input" name="remark" type='text' placeholder='选填，60字以内'></input>
@@ -83,7 +94,7 @@
         <view class="amount_view">
             <view class="amount_content">
                 <text class="title">实付金额：</text>
-                <text class="amount">￥{{total_amount}}</text>
+                <text class="amount">￥{{need_pay_amount}}</text>
             </view>
         </view>
         <view class="thin_line"></view>

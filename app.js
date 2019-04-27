@@ -114,24 +114,54 @@ App({
                 key: "openid",
                 data: res.data.openid
               })
+              that.addMembers()
             }
           }
         })
       }
     })
   },
+  //添加会员
+  addMembers: function () {
+    var that = this
+    var openid = that.globalData.openid
+    var bis_id = that.globalData.bis_id
+    var postdata = {
+      openid: openid,
+      avatarUrl: that.globalData.userInfo.avatarUrl,
+      nickname: that.globalData.userInfo.nickName,
+      city: that.globalData.userInfo.city,
+      country: that.globalData.userInfo.country,
+      sex: that.globalData.userInfo.gender,
+      province: that.globalData.userInfo.province,
+      bis_id: bis_id,
+      username: openid
+    }
+    wx.request({
+      url: that.globalData.extraRequestUrl + '/index/addMembers',
+      data: postdata,
+      header: {
+        'content-type': ''
+      },
+      method: 'post',
+      success: function (res) {
 
+      }
+    })
+  },  
   globalData: {
     userInfo: null,
-    bis_id: '1',
-    appid: "wxad58d8a5bce016a9",
-    secret: "bd1a1e37900b08f07d2914b8be1ee78a",
+    bis_id: '60',
+    appid: "wxad2c98b31c594923",
+    secret: "b5e8b3ca6248dd141dd45221bf92f248",
     openid: '',
     acode: '',
     rec_id: '',
     //腾讯云正式
-    requestUrl: "https://wxapi.siweishop.com/index",
-    acodeUrl: "https://wxapi.siweishop.com/",
-    payUrl: "https://wxapi.siweishop.com/index/pay999/pay",
+    requestUrl: "https://julian.dxshuju.com/index",
+    extraRequestUrl: "https://julian.dxshuju.com/business",
+    acodeUrl: "https://julian.dxshuju.com/",
+    oriPayUrl: "https://julian.dxshuju.com/pay/OriWxPay/pay",
+    rechargePayUrl: "https://julian.dxshuju.com/pay/RechargeWxPay/pay"
   }
 })
