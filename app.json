@@ -60,5 +60,6 @@
     "backgroundColor": "#f1f1f1",
     "borderStyle": "black",
     "position": "bottom"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
